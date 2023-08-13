@@ -1,0 +1,69 @@
+@import ../styles/_mixins
+@import ../styles/_variables
+%back__props
+    width: 25px
+    height: 25px
+    display: inline-flex
+    content: ''
+    background-repeat: no-repeat
+    background-position: center
+    background-size: contain
+.title__container,.description__container,.duedate__container
+    @include flex_box($direction: column)
+    gap: .5rem
+form
+    @include flex_box($direction: column)
+    gap: 2rem
+    padding: 1.6rem
+    margin-block-end: calc( 1.6rem + (66.19px - 1.6rem) )
+    textarea
+        font-family: "Poppins", sans-serif
+        height: 10rem
+        resize: none
+    label
+        font-size: 1.4rem
+        font-weight: 600
+.form__title
+    @include flex_box($justify: space-between)
+    align-items: center
+    box-shadow: 0 16px 20px #00000013
+    padding-block: 1.6rem
+    border-radius: 8px
+.newTask__input
+    outline: none
+    border: none
+    padding: 1rem
+    color: $grayishGray
+    border-radius: 8px
+    box-shadow: 0 16px 20px #00000013
+.newTask__input::placeholder
+    font-weight: 600
+.error
+    font-size: .9rem
+    color: #F00
+
+.buttons__container
+    margin-block-start: 1.5rem
+    @include flex_box($justify: flex-end)
+    button
+        @include flex_box()
+        cursor: pointer
+        background-color: $ligthGray
+        border: none
+        transition: .2s
+        padding: .4rem 2rem
+        border-radius: 8px
+    button:hover, button:active
+        transform: scale(1.2)
+        filter: brightness(1.2)
+    .send::after
+        background-image: url(../assets/images/paper-plane-solid.svg)
+        @extend %back__props
+        filter: invert(35%) sepia(85%) saturate(1461%) hue-rotate(192deg) brightness(87%) contrast(88%)
+        align-self: flex-end
+    .btn__cancel::after
+        background-image: url(../assets/images/ban-solid.svg)
+        @extend %back__props
+        filter: invert(45%) sepia(35%) saturate(4783%) hue-rotate(331deg) brightness(110%) contrast(107%)
+.buttons__container.updated
+    justify-content: space-between

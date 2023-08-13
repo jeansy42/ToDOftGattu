@@ -1,0 +1,100 @@
+@import '../styles/_variables'
+@import '../styles/_mixins'
+%background_props
+    background-repeat: no-repeat
+    background-position: center
+    background-size: contain
+//Comuns Styles
+.userIcon,.current__filter,.taskCard__options::after,.delete::after,.update::after, .cancel::after,.confirm::after,.calendar::after,.checkbox__container
+    display: inline-flex
+.global__container,.tasks__top
+    @include flex_box($direction: column)
+    gap: 1.5rem
+//Specific Styles    
+.global__container
+    padding-inline: 1.6rem
+.tasks__top
+    background-color: $white
+    position: sticky
+    top: 0
+    z-index: 9
+.tasks__header
+    @include flex_box($justify: space-between)
+.task__header-title
+    h5
+        color: $gray
+.search
+    width: 100%
+    box-shadow: inset 0 16px 20px 0 #0000000a, 0 4px 4px 0 #00000036,
+    outline: none
+    padding: 1.3rem
+    border: none
+    border-radius: 6px
+.search::placeholder
+    font-size: 1.2rem
+    color: $gray
+.tasks__filter
+    @include flex_box($justify: space-between)
+    align-items: flex-start
+.filter
+    @include flex_box()
+    position: absolute
+    right: 0
+    gap: .8rem
+    & :first-child
+        align-self: flex-start
+        padding: .2rem
+.current__filter
+    padding: .2rem
+.current__filter::after
+    content: ''
+    width: 1rem
+    height: 1rem
+    transform: rotate(-90deg)
+    transition: .2s
+    align-self: center
+    background-image: url('../assets/images/caret-down-solid.svg')
+    @extend %background_props
+.current__filter.active::after
+    transform: none
+.currentFilterOptions__container
+    z-index: 15
+    background-color: $white
+    border: 2px solid $gray
+    border-radius: 8px
+    align-self: flex-start
+.filter__options
+    @include flex_box($direction: column)
+    span
+        width: 100%
+        padding: .2rem
+        margin-block-start: .5rem
+    .active
+        background-color: $blue
+        color: $white
+    & :last-child
+        border-bottom-left-radius: 8px
+        border-bottom-right-radius: 8px
+
+.filter__status
+    @include flex_box($justify:space-between)
+    li
+        display: inline-flex
+        color: $grayishGray
+        font-weight: 600
+    .active
+        color: $black
+    .active::after
+        content: ''
+        width: 2px
+        background-color: $black
+        transform: rotate(90deg)
+        position: relative
+        top: 10px
+        right: 50%
+.noTasks,.noResult
+    color: $ligthGray
+    text-align: center
+.noTasks
+    margin-block-start: 50px
+    font-size: 1.5rem

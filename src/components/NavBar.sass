@@ -1,0 +1,50 @@
+@import '../styles/_mixins'
+@import '../styles/_variables'
+%background_props
+    content: ''
+    background-repeat: no-repeat
+    background-position: center
+    background-size: contain
+%background_props , .nav__newtasks
+    width: 25px
+    height: 25px
+.nav__home,.nav__newtasks,.nav__tasks
+    display: inline-flex
+nav
+    background-color: $white
+    position: fixed
+    z-index: 10
+    bottom: 0
+    width: 100%
+    padding-inline: 2rem
+    padding-block: .8rem
+    @include flex_box($justify: space-between)
+    align-items: center
+    box-shadow: -4px 0 60px 0 #2237463f
+.nav__home::after
+    background-image: url('../assets/images/house-solid.svg')
+    @extend %background_props
+.nav__tasks::after
+    background-image: url('../assets/images/list-check-solid.svg')
+    @extend %background_props
+.nav__newtasks
+    @include flex_box()
+    align-items: center
+    border-radius: 6px
+    background-color: $ligthGray
+.nav__newtasks::after
+    background-image: url('../assets/images/plus-solid.svg')
+    width: 15px
+    height: 15px
+    @extend %background_props
+.nav__element.active::after, .nav__newtasks.active
+    width: 47px
+    height: 47px
+.nav__element.active::after
+    filter: brightness(0) saturate(100%) invert(81%) sepia(15%) saturate(4675%) hue-rotate(347deg) brightness(100%) contrast(102%)
+.nav__newtasks.active
+    background-color: $yellow
+.nav__newtasks.active::after
+    width: 25px
+    height: 25px
+    filter: none

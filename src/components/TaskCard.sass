@@ -1,0 +1,115 @@
+@import '../styles/_mixins'
+@import '../styles/_variables'
+%background_props
+    content: ''
+    background-repeat: no-repeat
+    background-position: center
+    background-size: contain
+//Comun Styles
+.taskCard__headerOptions-container, .taskCard__header, .taskCard__options
+    @include flex_box($justify:space-between )
+    align-items: center
+.taskCard__options::after, .update::after, .calendar::after
+    filter: invert(67%) sepia(12%) saturate(309%) hue-rotate(195deg) brightness(87%) contrast(86%)
+.delete::after,.update::after,.confirm::after,.cancel::after,.calendar::after
+    height: 15px
+    width: 15px
+.delete::after,.cancel::after
+    filter: invert(45%) sepia(35%) saturate(4783%) hue-rotate(331deg) brightness(110%) contrast(107%)
+
+//Specific Styles
+.tasks__container
+    @include flex_box($direction: column)
+    gap: 1.5rem
+    overflow: auto
+    margin-block-end: calc( 1.6rem + (66.19px - 1.6rem) )
+.taskCard
+    @include flex_box($justify: flex-start)
+    gap: 1rem
+    align-items: center
+    background-color: $white
+    border-radius: 8px
+    padding-block: 1rem
+    box-shadow: 0 4px 60px #00000010, inset 0 0 60px #0000000a
+.task__main
+    @include flex_box($direction: column)
+    width: 100%
+.checkbox__container
+    min-width: 20px
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    border: 1px solid $gray
+    background-color: $white
+    box-shadow: inset 0 0 60px #0000000a
+    position: relative
+    @include flex_box()
+    align-items: center
+.checkbox__container.checked
+    background-color: $yellow
+    border: 1px solid transparent
+.checkbox__container.checked::after
+    content: ''
+    height: 10px
+    width: 5px
+    position: absolute
+    top: 1px
+    bottom: 0
+    border: solid $blue
+    border-width: 0 3px 3px 0
+    transform: rotate(45deg)
+
+[type="checkbox"]
+    opacity: 0
+.taskCard__header
+    gap: 1rem
+    span
+        padding: .1rem 1rem
+        font-size: .8rem
+        border-radius: 100px
+        color: $white
+    .pending
+        background-color: $yellow
+    .completed
+        background-color: $blue
+.taskCard__header.completed
+    h4
+        color: $gray
+        text-decoration: line-through
+        transition: .2s
+.taskCard__options.hidden
+    display: none
+.taskCard__options::after
+    background-image: url('../assets/images/ellipsis-vertical-solid.svg')
+    @extend %background_props
+    align-self: center
+    width: 20px
+    height: 20px
+.UpdDel,.confirm-delete__container
+    @include flex_box()
+    gap: 2rem
+.delete::after
+    background-image: url('../assets/images/trash-solid.svg')
+    @extend %background_props
+
+.update::after
+    background-image: url('../assets/images/pen-solid.svg')
+    @extend %background_props
+.confirm::after
+    background-image: url('../assets/images/check-solid.svg')
+    @extend %background_props
+    filter: invert(63%) sepia(11%) saturate(1983%) hue-rotate(72deg) brightness(90%) contrast(97%)
+.cancel::after
+    background-image: url('../assets/images/xmark-solid.svg')
+    @extend %background_props
+.calendar::after
+    background-image: url('../assets/images/calendar-days-solid.svg')
+    @extend %background_props
+.taskCard__duedate
+    @include flex_box($justify:flex-start)
+    gap: 1rem
+    margin-block-start: .5rem
+    color: $otherGray
+    transition: .2s
+.taskCard__duedate.completed
+    color: $ligthGray
